@@ -1,4 +1,7 @@
-﻿@{
+﻿@model IEnumerable <YayOrNay.Models.Movie>
+
+
+@{
     ViewBag.Title = "Home Page";
 }
 
@@ -7,6 +10,23 @@
     <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
     <p><a href="http://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
 </div>
+
+@foreach (var item in Model)
+{
+    <div>
+        <h4>@item.Title</h4>
+        <div>
+            @item.Genre,
+        @item.Certificate,
+        @item.ReleaseDate
+    </div>
+    <div>@item.Rating</div>
+    <hr />
+</div>
+}
+
+
+
 
 <div class="row">
     <div class="col-md-4">
