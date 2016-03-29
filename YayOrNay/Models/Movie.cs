@@ -12,7 +12,7 @@ namespace YayOrNay.Models
         public string Genre { get; set; }
         public string Certificate { get; set; }
         public DateTime ReleaseDate { get; set; }
-        public double Rating { get; set; }
+        //public double Rating { get; set; }
         public ICollection<MovieReview> Reviews { get; set; }
 
     }
