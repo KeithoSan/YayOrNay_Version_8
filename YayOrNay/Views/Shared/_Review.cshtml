@@ -1,0 +1,13 @@
+﻿@model YayOrNay.Models.MovieReview
+
+<div class="review">
+    <h4>@Model.Title</h4>
+    <p>Rating @Model.Rating /10</p>
+    <p>@Model.Genre</p>
+    <p>@Model.Certificate</p>
+    <p>@Model.ReleaseDate</p>
+
+    <span class="right ">
+        @Html.ActionLink("Edit", "Edit", new { id = Model.Id })
+    </span>
+</div>

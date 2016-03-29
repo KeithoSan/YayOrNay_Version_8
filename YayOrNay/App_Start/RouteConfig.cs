@@ -13,6 +13,13 @@ namespace YayOrNay
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
+            // /Genre/Comedy
+
+            routes.MapRoute("Genre",
+                "genre/{name}",
+                new { controller = "Genre", action = "Search", name = UrlParameter.Optional });
+
+
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
