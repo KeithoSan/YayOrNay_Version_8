@@ -13,7 +13,7 @@ namespace YayOrNay.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "201603291432435_Initial"; }
+            get { return "201603301802063_Initial"; }
         }
         
         string IMigrationMetadata.Source

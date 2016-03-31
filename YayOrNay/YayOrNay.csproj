@@ -167,9 +167,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201603291432435_Initial.cs" />
-    <Compile Include="Migrations\201603291432435_Initial.Designer.cs">
-      <DependentUpon>201603291432435_Initial.cs</DependentUpon>
+    <Compile Include="Migrations\201603301802063_Initial.cs" />
+    <Compile Include="Migrations\201603301802063_Initial.Designer.cs">
+      <DependentUpon>201603301802063_Initial.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AboutModel.cs" />
@@ -177,6 +177,7 @@
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\Movie.cs" />
+    <Compile Include="Models\MovieListViewModel.cs" />
     <Compile Include="Models\MovieReview.cs" />
     <Compile Include="Models\YayOrNayDb.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -203,14 +204,18 @@
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\_references.js" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
     <Content Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
-    <Content Include="Views\Web.config" />
+    <Content Include="Views\Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
@@ -253,8 +258,8 @@
     <None Include="Project_Readme.html" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201603291432435_Initial.resx">
-      <DependentUpon>201603291432435_Initial.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201603301802063_Initial.resx">
+      <DependentUpon>201603301802063_Initial.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

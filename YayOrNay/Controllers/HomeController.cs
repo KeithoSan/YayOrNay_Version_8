@@ -11,10 +11,36 @@ namespace YayOrNay.Controllers
     {
         YayOrNayDb _db = new YayOrNayDb();
 
-        public ActionResult Index()
+        public ActionResult Index(string searchTerm = null)
         {
 
-            var model = _db.Movies.ToList();
+            //var model =
+            //    from r in _db.Movies
+            //    orderby r.Reviews.Average(review => review.Rating) descending
+            //    select new MovieListViewModel
+            //    {
+            //       Id = r.Id,
+            //        Title = r.Title,
+            //        Genre = r.Genre,
+            //        Certificate = r.Certificate,
+            //        CountOfReviews = r.Reviews.Count()
+            //    };
+
+            var model =
+                _db.Movies
+                .OrderByDescending(r => r.Reviews.Average(review => review.Rating))
+                .Where(r => searchTerm == null || r.Title.StartsWith(searchTerm))
+                .Take(10)
+                .Select(r => new MovieListViewModel
+                        {
+                            Id = r.Id,
+                            Title = r.Title,
+                            Genre = r.Genre,
+                            Certificate = r.Certificate,
+                            CountOfReviews = r.Reviews.Count()
+                        }
+                        );
+
 
             return View(model);
         }

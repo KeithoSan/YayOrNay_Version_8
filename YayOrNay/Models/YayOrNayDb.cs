@@ -8,7 +8,7 @@ namespace YayOrNay.Models
 {
     public class YayOrNayDb : DbContext
     {
-        public YayOrNayDb() : base("name=DefaultConnection")
+        public YayOrNayDb()  : base("name=DefaultConnection")
         {
 
         }
