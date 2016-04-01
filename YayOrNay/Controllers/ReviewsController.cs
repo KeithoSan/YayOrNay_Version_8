@@ -49,7 +49,7 @@ namespace YayOrNay.Controllers
             return View(model);
         }
 
-
+        //[Bind(Exclude = "ReviewerName")]
         [HttpPost]
         public ActionResult Edit (MovieReview review)
         {
