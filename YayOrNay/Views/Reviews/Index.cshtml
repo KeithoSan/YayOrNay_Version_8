@@ -1,26 +1,19 @@
-﻿@model IEnumerable<YayOrNay.Models.MovieReview>
+﻿@model YayOrNay.Models.Movie
+
+
 
 @{
     ViewBag.Title = "Index";
 }
 
-<h2>The Latest Reviews</h2>
+<h2>Reviews for @Model.Title</h2>
 
-We are showing the lastest @Model.Count()  reviews
-
-
-@foreach (var item in Model)
-{
-    
-    @Html.Partial("_Review",item)
-    
-
-    
-}
-
+@Html.Partial("_Reviews", @Model.Reviews)
 
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Create New", "Create", new { movieID = Model.Id})
 </p>
+
+
 
