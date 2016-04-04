@@ -19,14 +19,14 @@ namespace YayOrNay.Migrations
 
 
             context.Movies.AddOrUpdate(r => r.Title,
-                 new Movie { Title = "Notebook", Genre = "Romance", Certificate = "PG" },
-                 new Movie { Title = "Godzilla", Genre = "Action", Certificate = "PG-13"},
+                 new Movie { Title = "Notebook", Genre = "Romance", Certificate = "PG", ReleaseDate = DateTime.Parse("02 / 06 / 2004") },
+                 new Movie { Title = "Godzilla", Genre = "Action", Certificate = "PG-13", ReleaseDate = DateTime.Parse("16 / 05 / 2014") },
                  new Movie
                  {
                      Title = "The Matrix",
                      Genre = "Action",
                      Certificate = "R",
-                     //ReleaseDate = new DateTime(01 / 02 / 1999),
+                     ReleaseDate = DateTime.Parse("01 / 02 / 1999"),
 
                      Reviews =
                      new List<MovieReview>

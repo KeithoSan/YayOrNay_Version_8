@@ -37,6 +37,7 @@ namespace YayOrNay.Controllers
                             Title = r.Title,
                             Genre = r.Genre,
                             Certificate = r.Certificate,
+                            ReleaseDate = r.ReleaseDate,
                             CountOfReviews = r.Reviews.Count()
                         }
                         );

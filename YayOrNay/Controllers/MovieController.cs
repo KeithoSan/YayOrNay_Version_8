@@ -79,7 +79,7 @@ namespace YayOrNay.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Title,Genre,Certificate")] Movie movie)
+        public ActionResult Edit([Bind(Include = "Id,Title,Genre,Certificate,ReleaseDate")] Movie movie)
         {
             if (ModelState.IsValid)
             {

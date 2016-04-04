@@ -173,6 +173,10 @@
     <Compile Include="Migrations\201603301802063_Initial.Designer.cs">
       <DependentUpon>201603301802063_Initial.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201604041628452_AddReleaseDateMig.cs" />
+    <Compile Include="Migrations\201604041628452_AddReleaseDateMig.Designer.cs">
+      <DependentUpon>201604041628452_AddReleaseDateMig.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AboutModel.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -269,6 +273,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201603301802063_Initial.resx">
       <DependentUpon>201603301802063_Initial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201604041628452_AddReleaseDateMig.resx">
+      <DependentUpon>201604041628452_AddReleaseDateMig.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

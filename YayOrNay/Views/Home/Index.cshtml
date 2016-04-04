@@ -31,10 +31,15 @@
         <div>
            <P>Genre: @item.Genre</p>
            <p>Certifications: @item.Certificate</p> 
+
+           <p> Release Date: @Convert.ToString(string.Format("{0:dd/MM/yyy}", @item.ReleaseDate))</p>
+        
+
+
             <div>
                 Reviews: @item.CountOfReviews
             </div>
-        @*@item.ReleaseDate*@
+        
             <hr />
         </div>
    
