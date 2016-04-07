@@ -26,7 +26,7 @@ namespace YayOrNay.Controllers
             //        CountOfReviews = r.Reviews.Count()
             //    };
 
-            var model =
+           var model =
                 _db.Movies
                 .OrderByDescending(r => r.Reviews.Average(review => review.Rating))
                 .Where(r => searchTerm == null || r.Title.StartsWith(searchTerm))
@@ -41,6 +41,7 @@ namespace YayOrNay.Controllers
                             CountOfReviews = r.Reviews.Count()
                         }
                         );
+        
 
 
             return View(model);

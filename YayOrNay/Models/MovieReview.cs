@@ -62,4 +62,13 @@ namespace YayOrNay.Models
             //throw new NotImplementedException();
         }
     }
+
+    //public partial class MovieReview : IValidatableObject
+    //{
+    //    public ICollection<AverageRating>
+
+    //    public int Id { get; set; }
+    //    public int AverageRating { get _AverageRating(c => c.AverageRating; set; }
+
+    //}
 }
