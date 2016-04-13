@@ -13,6 +13,9 @@ namespace YayOrNay.Models
         public string Genre { get; set; }
         public string Certificate { get; set; }
 
+
+
+
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/MM/yyyy}")]
         public DateTime ReleaseDate { get; set; }
 

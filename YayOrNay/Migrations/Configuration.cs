@@ -34,6 +34,14 @@ namespace YayOrNay.Migrations
                         new MovieReview {Rating = 10, Comment = "Awesome Movie!", ReviewerName = "Keith" }
                     }
                  });
+
+            for (int i = 0; i <1000; i++)
+            {
+                context.Movies.AddOrUpdate(r => r.Title,
+                    new Movie { Title = i.ToString(), Genre = "Any Genre", Certificate = "Any Certificate", ReleaseDate = DateTime.Parse("21/01/1986") });
+            }
+
+
         }
     }
 }
