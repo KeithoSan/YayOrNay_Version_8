@@ -13,6 +13,28 @@ namespace YayOrNay.Models
         public string Genre { get; set; }
         public string Certificate { get; set; }
 
+        //public double AverageRating
+        //{
+        //    get
+        //    {
+        //        using (MovieReview db = new MovieReview())
+        //        {
+        //            var reviews = db.Rating
+
+        //                if (reviews.Count()>0)
+        //            {
+        //                double RatingAverage = (double) reviews.Average(r => r.Rating) 0;
+        //                return RatingAverage;
+        //            }
+        //            return 0;
+        //        }
+        //    }
+        //}
+  
+
+
+
+
 
 
 
