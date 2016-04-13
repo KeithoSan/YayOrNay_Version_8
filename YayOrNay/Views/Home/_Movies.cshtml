@@ -1,0 +1,32 @@
+﻿@model IEnumerable<YayOrNay.Models.MovieListViewModel>
+
+
+
+<div id="movieList">
+
+
+    @foreach (var item in Model)
+    {
+        <div>
+            <h4>@item.Title</h4>
+            <div>
+                <p>Genre: @item.Genre</p>
+                <p>Certifications: @item.Certificate</p>
+
+                <p> Release Date: @Convert.ToString(string.Format("{0:dd/MM/yyy}", @item.ReleaseDate))</p>
+
+
+
+                <div>
+                    Reviews: @item.CountOfReviews
+                </div>
+
+                <hr />
+            </div>
+
+
+        </div>
+    }
+
+
+</div>

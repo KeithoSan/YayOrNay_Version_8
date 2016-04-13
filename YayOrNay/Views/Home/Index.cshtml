@@ -13,7 +13,8 @@
 
 
 
-<form method = "get">
+<form method = "get" action="@Url.Action("Index")" 
+      data-yon-ajax="true" data-yon-target="#movieList">
 
     <input type="search" name= "searchTerm" />
      <input type="submit" value="Search By Title"/>
@@ -24,29 +25,23 @@
 
 
 
-@foreach (var item in Model)
+
+
+
+@*@using (Ajax.BeginForm(
+    new AjaxOptions { 
+        HttpMethod = "get", 
+        InsertionMode = InsertionMode.Replace, 
+        UpdateTargetId = "movieList" }))
 {
-    <div>
-        <h4>@item.Title</h4>
-        <div>
-           <P>Genre: @item.Genre</p>
-           <p>Certifications: @item.Certificate</p> 
-
-           <p> Release Date: @Convert.ToString(string.Format("{0:dd/MM/yyy}", @item.ReleaseDate))</p>
-        
+    <input type="search" name="searchTerm" />
+    <input type="submit" value="Search By Title" />
+}*@
 
 
-            <div>
-                Reviews: @item.CountOfReviews
-            </div>
-        
-            <hr />
-        </div>
-   
-   
-</div>
-}
+@*render the partial view for movies*@
 
+@Html.Partial("_Movies", Model)
 
 
 

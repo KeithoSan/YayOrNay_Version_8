@@ -39,13 +39,19 @@ namespace YayOrNay.Controllers
                             Certificate = r.Certificate,
                             ReleaseDate = r.ReleaseDate,
                             CountOfReviews = r.Reviews.Count()
-                        }
-                        );
-        
+                        });
 
+            if (Request.IsAjaxRequest())
+            {
+                return PartialView("_Movies", model);
+            }
+          
 
             return View(model);
         }
+
+
+
 
         public ActionResult About()
         {
