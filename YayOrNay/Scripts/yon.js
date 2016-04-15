@@ -15,13 +15,59 @@ $(function () {
 
         $.ajax(options).done(function (data) {
             var $target = $($form.attr("data-yon-target"));
-            $target.replaceWith(data);
+            var $newHtml = $(data);
+            $target.replaceWith($newHtml);
+            $newHtml.effect("highlight");
         });
 
         return false;
 
     };
 
-    $("form[data-yon-ajax='true']").submit(ajaxFormSubmit);
+    var submitAutocompleteForm = function  (event,ui){
+        
+        var $input =$(this);
+        $input.val(ui.item.label);
 
+        var $form = $input.parents("form:first");
+        $form.submit();
+    };
+
+
+    var createAutocomplete = function () {
+        var $input = $(this);
+
+        var options = {
+            source: $input.attr("data-yon-autocomplete"),
+            select: submitAutocompleteForm
+        };
+
+        $input.autocomplete(options);
+    };
+
+
+    var getPage = function () {
+        var $a = $(this);
+
+        var options = {
+            url: $a.attr("href"),
+            data: $("form").serialize(),
+            type: "get"
+        };
+
+        $.ajax(options).done(function (data) {
+            var target = $a.parents("div.pagedList").attr("data-yon-target");
+            $(target).replaceWith(data);
+        });
+        return false;
+
+
+    };
+
+
+    $("form[data-yon-ajax='true']").submit(ajaxFormSubmit);
+    $("input[data-yon-autocomplete]").each(createAutocomplete);
+
+
+    $(".body-content").on("click", ".pagedList a", getPage);
 });

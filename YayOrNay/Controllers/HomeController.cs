@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using YayOrNay.Models;
+using PagedList;
 
 namespace YayOrNay.Controllers
 {
@@ -11,7 +12,25 @@ namespace YayOrNay.Controllers
     {
         YayOrNayDb _db = new YayOrNayDb();
 
-        public ActionResult Index(string searchTerm = null)
+
+
+        public ActionResult Autocomplete (string term)
+        {
+            var model =
+                _db.Movies
+                .Where(r => r.Title.StartsWith(term))
+                .Take(10)
+                .Select(r => new
+                {
+                    label = r.Title
+                });
+
+            return Json(model, JsonRequestBehavior.AllowGet);
+
+        }
+
+
+        public ActionResult Index(string searchTerm = null, int page = 1)
         {
 
             //var model =
@@ -26,20 +45,20 @@ namespace YayOrNay.Controllers
             //        CountOfReviews = r.Reviews.Count()
             //    };
 
-           var model =
-                _db.Movies
-                .OrderByDescending(r => r.Reviews.Average(review => review.Rating))
-                .Where(r => searchTerm == null || r.Title.StartsWith(searchTerm))
-                .Take(10)
-                .Select(r => new MovieListViewModel
-                        {
-                            Id = r.Id,
-                            Title = r.Title,
-                            Genre = r.Genre,
-                            Certificate = r.Certificate,
-                            ReleaseDate = r.ReleaseDate,
-                            CountOfReviews = r.Reviews.Count()
-                        });
+            var model =
+                 _db.Movies
+                 .OrderByDescending(r => r.Reviews.Average(review => review.Rating))
+                 .Where(r => searchTerm == null || r.Title.StartsWith(searchTerm))
+
+                 .Select(r => new MovieListViewModel
+                         {
+                             Id = r.Id,
+                             Title = r.Title,
+                             Genre = r.Genre,
+                             Certificate = r.Certificate,
+                             ReleaseDate = r.ReleaseDate,
+                             CountOfReviews = r.Reviews.Count()
+                         }).ToPagedList(page, 10);
 
             if (Request.IsAjaxRequest())
             {
