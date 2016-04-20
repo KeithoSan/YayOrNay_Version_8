@@ -72,5 +72,5 @@ $(function () {
     $("input[data-yon-autocomplete]").each(createAutocomplete);
 
 
-    $(".main-content").on("click", ".pagedList a", getPage);
+    $(".body-content").on("click", ".pagedList a", getPage);
 });

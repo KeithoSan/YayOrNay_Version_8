@@ -46,24 +46,26 @@
     
 
 
-    <div class="container body-content">
-                  @RenderBody()
-       
+    @*<div class="container body-content">
+      
+        
+            @RenderBody()
+
             <hr />
-</div>
+     </div>*@
 
 
     
 
 
-    @*This part was suppose to help the async for paging but it does not work for some reason*@
+    @*This part was suppose to help the async for pagForce ing but it does not work for some reason*@
 
-    @*<div class="container body-content">
-        @RenderSection("featured", required: false)
-        <section class="content-wrapper main-content clear-fix">
+    <div class="container body-content ">
+       
+       
             @RenderBody()
-        </section>
-    </div>*@ 
+       
+    </div> 
 
 
 
@@ -76,7 +78,7 @@
         <footer>
             <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
         </footer>
-    </div>
+   
 
     @Scripts.Render("~/bundles/yon")
 
