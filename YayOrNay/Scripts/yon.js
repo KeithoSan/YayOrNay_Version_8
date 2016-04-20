@@ -24,6 +24,8 @@ $(function () {
 
     };
 
+
+    // automatically submit when title has been selected
     var submitAutocompleteForm = function  (event,ui){
         
         var $input =$(this);
@@ -34,6 +36,7 @@ $(function () {
     };
 
 
+    //auto complete suggestion when title is typed
     var createAutocomplete = function () {
         var $input = $(this);
 
@@ -69,5 +72,5 @@ $(function () {
     $("input[data-yon-autocomplete]").each(createAutocomplete);
 
 
-    $(".body-content").on("click", ".pagedList a", getPage);
+    $(".main-content").on("click", ".pagedList a", getPage);
 });

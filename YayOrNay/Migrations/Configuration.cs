@@ -36,7 +36,7 @@ namespace YayOrNay.Migrations
                  });
 
 
-            // loop to add about 100 movies
+            // loop to add about 1000 movies
             for (int i = 0; i <1000; i++)
             {
                 context.Movies.AddOrUpdate(r => r.Title,

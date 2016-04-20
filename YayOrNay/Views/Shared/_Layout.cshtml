@@ -8,6 +8,8 @@
     <meta name="viewport" content="width=device-width" /> 
 
     @Styles.Render("~/Content/themes/base/css")
+
+
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 
@@ -45,19 +47,29 @@
 
 
     <div class="container body-content">
+                  @RenderBody()
        
-
-            @RenderBody()
-
             <hr />
-       
-       <div>
+</div>
+
+
+    
+
+
+    @*This part was suppose to help the async for paging but it does not work for some reason*@
+
+    @*<div class="container body-content">
+        @RenderSection("featured", required: false)
+        <section class="content-wrapper main-content clear-fix">
+            @RenderBody()
+        </section>
+    </div>*@ 
+
 
 
            @*<div>
             @Html.Action("BestReview", "Reviews")
-           
-        </div>*@
+           </div>*@
 
 
 
@@ -67,7 +79,9 @@
     </div>
 
     @Scripts.Render("~/bundles/yon")
+
     @*@Scripts.Render("~/bundles/bootstrap")*@
+
     @RenderSection("scripts", required: false)
 </body>
 </html>
