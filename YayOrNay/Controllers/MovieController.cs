@@ -9,7 +9,7 @@ using System.Web.Mvc;
 using YayOrNay.Models;
 
 namespace YayOrNay.Controllers
-{
+{//test
     public class MovieController : Controller
     {
         private YayOrNayDb db = new YayOrNayDb();
