@@ -20,21 +20,23 @@ namespace YayOrNay.Controllers
             return View(db.Movies.ToList());
         }
 
-        //// GET: Movie/Details/5
-        //public ActionResult Details(int? id)
-        //{
-        //    if (id == null)
-        //    {
-        //        return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-        //    }
-        //    Movie movie = db.Movies.Find(id);
-        //    if (movie == null)
-        //    {
-                
-        //        return HttpNotFound();
-        //    }
-        //    return View(movie);
-        //}
+        // GET: Movie/Details/5
+        public ActionResult Details(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
+            // LINQ query that fetches the movies from the database to bring back releated files.
+            Movie movie  = db.Movies.Include(s => s.Files).SingleOrDefault(s => s.Id == id);
+            if (movie == null)
+            {
+
+                return HttpNotFound();
+            }
+            return View(movie);
+        }
 
         // GET: Movie/Create
         public ActionResult Create()
@@ -47,13 +49,32 @@ namespace YayOrNay.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Title,Genre,Certificate")] Movie movie)
+        public ActionResult Create([Bind(Include = "Id,Title,Genre,Certificate,ReleaseDate")] Movie movie, HttpPostedFileBase upload)
         {
             if (ModelState.IsValid)
             {
-                db.Movies.Add(movie);
-                db.SaveChanges();
-                return RedirectToAction("Index");
+
+
+                //upload image in controller 
+                if (upload != null && upload.ContentLength > 0)
+                {
+                    var avatar = new File
+                    {
+                        FileName = System.IO.Path.GetFileName(upload.FileName),
+                        FileType = FileType.Avatar,
+                        ContentType = upload.ContentType
+                    };
+                    using (var reader = new System.IO.BinaryReader(upload.InputStream))
+                    {
+                        avatar.Content = reader.ReadBytes(upload.ContentLength);
+                    }
+                    movie.Files = new List<File> { avatar };
+                    db.Files.Add(avatar);
+                    db.Movies.Add(movie);
+                    db.SaveChanges();
+                    return RedirectToAction("Index");
+                }
+                return RedirectToAction("Create");
             }
 
             return View(movie);

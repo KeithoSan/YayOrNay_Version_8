@@ -15,18 +15,27 @@
         <div>
             <h4>@item.Title</h4>
             <div>
-                <p>Genre: @item.Genre</p>
-                <p>Certifications: @item.Certificate</p>
+                <table><tr>
+                           <td>
 
-                <p> Release Date: @Convert.ToString(string.Format("{0:dd/MM/yyy}", @item.ReleaseDate))</p>
+                               @if (item.Files != null && item.Files.Any(f => f.FileType == FileType.Avatar))
+                               { 
+                                   <img src="~/File?id=@item.Files.First(f => f.FileType == FileType.Avatar).FileId" alt="avatar" height="90" width="90" />
+                               }
+                           </td>
+                    <td>
+                        <p>Genre: @item.Genre</p>
+                        <p>Certifications: @item.Certificate</p>
 
+                        <p> Release Date: @Convert.ToString(string.Format("{0:dd/MM/yyy}", @item.ReleaseDate))</p>
+                        <div>
+                            Reviews: @item.CountOfReviews
+                        </div>
 
+                        <hr />
+                    </td>    
 
-                <div>
-                    Reviews: @item.CountOfReviews
-                </div>
-
-                <hr />
+                </tr></table>           
             </div>
 
 

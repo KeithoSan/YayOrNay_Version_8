@@ -52,12 +52,15 @@ namespace YayOrNay.Controllers
 
                  .Select(r => new MovieListViewModel
                          {
+                     
                              Id = r.Id,
+                             //Files = r.Files,
                              Title = r.Title,
                              Genre = r.Genre,
                              Certificate = r.Certificate,
                              ReleaseDate = r.ReleaseDate,
-                             CountOfReviews = r.Reviews.Count()
+                             CountOfReviews = r.Reviews.Count(),
+                             Files = r.Files
                          }).ToPagedList(page, 10);
 
 
